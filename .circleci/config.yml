@@ -37,7 +37,6 @@ jobs:
 
       - store_artifacts:
           path: build/app/outputs/flutter-apk/app-release.apk
-
   maestro-upload:
       docker:
         - image: cimg/openjdk:19.0.1
@@ -52,3 +51,10 @@ jobs:
               maestro cloud \
               --apiKey $MDEV_API_KEY \
               build/app/outputs/flutter-apk/app-release.apk .maestro
+workflows:
+  build-and-upload:
+    jobs:
+      - build-android
+      - maestro-upload:
+          requires:
+            - build-android
