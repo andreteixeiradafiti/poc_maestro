@@ -54,7 +54,7 @@ jobs:
 workflows:
   build-and-upload:
     jobs:
-      - build-android
+      - build
       - maestro-upload:
           requires:
-            - build-android
+            - build
