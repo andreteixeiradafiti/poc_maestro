@@ -38,17 +38,17 @@ jobs:
       - store_artifacts:
           path: build/app/outputs/flutter-apk/app-release.apk
 
-maestro-upload:
-    docker:
-      - image: cimg/openjdk:19.0.1
-    steps:
-      - attach_workspace:
-          at: .
-      - run:
-          name: Download and run maestro
-          command: |
-            curl -Ls "https://get.maestro.mobile.dev" | bash
-            export PATH="$PATH":"$HOME/.maestro/bin"
-            maestro cloud \
-            --apiKey $MDEV_API_KEY \
-            build/app/outputs/flutter-apk/app-release.apk .maestro
+  maestro-upload:
+      docker:
+        - image: cimg/openjdk:19.0.1
+      steps:
+        - attach_workspace:
+            at: .
+        - run:
+            name: Download and run maestro
+            command: |
+              curl -Ls "https://get.maestro.mobile.dev" | bash
+              export PATH="$PATH":"$HOME/.maestro/bin"
+              maestro cloud \
+              --apiKey $MDEV_API_KEY \
+              build/app/outputs/flutter-apk/app-release.apk .maestro
