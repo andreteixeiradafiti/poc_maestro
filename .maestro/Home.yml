@@ -1,0 +1,4 @@
+appId: com.example.poc_maestro
+---
+- launchApp
+- tapOn: "fab_increment"
