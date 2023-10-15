@@ -37,6 +37,11 @@ jobs:
 
       - store_artifacts:
           path: build/app/outputs/flutter-apk/app-release.apk
+          
+      - persist_to_workspace:
+          root: .
+          paths:
+            - .
   maestro-upload:
       docker:
         - image: cimg/openjdk:19.0.1
